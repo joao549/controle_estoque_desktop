@@ -30,7 +30,7 @@ namespace senac2
             //MessageBox.Show("Passou aqui");
             SqlConnection conn = new SqlConnection(@"Data Source=JOAO-ELIAS\SQLEXPRESS; Initial Catalog=senac;Integrated Security=True");
             string sqladd = "INSERT INTO produtos (nome, descricao, unidade, valor, quantidade, imagem) VALUES(@nome, @descricao, @unidade, @valor, @quantidade, @imagem)";
-            string sqlupdt = "UPDATE produtos set nome=@nome, descricao=@descricao, valor=@valor, quantidade=@quantidade where id=@id";
+            string sqlupdt = "UPDATE produtos set nome=@nome, descricao=@descricao, valor=@valor, quantidade=@quantidade, imagem=@imagem where id=@id";
             
             //MessageBox.Show("Passou aqui");
             if (string.IsNullOrEmpty(txt_id.Text))
@@ -104,7 +104,12 @@ namespace senac2
 
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Deseja Cancelar a inserção/Edição do item selcionado?", "Aviso", MessageBoxButtons.YesNo);
+           DialogResult result = MessageBox.Show("Deseja Cancelar a inserção/Edição do item selcionado?", "Aviso", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                Limpacampos();
+                Close();
+            }
         }
 
         private void btn_imagem_Click(object sender, EventArgs e)
