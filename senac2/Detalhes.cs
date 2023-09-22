@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,8 +29,9 @@ namespace senac2
         {
             //MessageBox.Show("Passou aqui");
             SqlConnection conn = new SqlConnection(@"Data Source=JOAO-ELIAS\SQLEXPRESS; Initial Catalog=senac;Integrated Security=True");
-            string sqladd = "INSERT INTO produtos (nome, descricao, unidade, valor, quantidade) VALUES(@nome, @descricao, @unidade, @valor, @quantidade)";
+            string sqladd = "INSERT INTO produtos (nome, descricao, unidade, valor, quantidade, imagem) VALUES(@nome, @descricao, @unidade, @valor, @quantidade, @imagem)";
             string sqlupdt = "UPDATE produtos set nome=@nome, descricao=@descricao, valor=@valor, quantidade=@quantidade where id=@id";
+            
             //MessageBox.Show("Passou aqui");
             if (string.IsNullOrEmpty(txt_id.Text))
             {
@@ -42,7 +44,12 @@ namespace senac2
                         comando.Parameters.Add(new SqlParameter("@unidade", combo_unidade.Text));
                         comando.Parameters.Add(new SqlParameter("@valor", txt_valor.Text));
                         comando.Parameters.Add(new SqlParameter("@quantidade", txt_qtd.Text));
-                        //MessageBox.Show("Passou aqui");
+                        if(pictureBox1 != null)
+                        {
+                            MemoryStream memstr = new MemoryStream();
+                            pictureBox1.Image.Save(memstr, pictureBox1.Image.RawFormat);
+                            comando.Parameters.AddWithValue("@imagem", memstr.ToArray());
+                        }
                         conn.Open();
                         comando.ExecuteNonQuery();
                         conn.Close();
@@ -92,7 +99,11 @@ namespace senac2
 
         private void btn_imagem_Click(object sender, EventArgs e)
         {
-
+            Arquivos.Filter = "*.Jpeg; *.png; *.Gif;| *.Jpeg; *.png; *.Gif";
+            if(Arquivos.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox1.Image = Image.FromFile(Arquivos.FileName);
+            }
         }
         private void Limpacampos()
         {

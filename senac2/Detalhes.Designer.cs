@@ -47,6 +47,7 @@
             this.lbl_valor = new System.Windows.Forms.Label();
             this.lbl_imagem = new System.Windows.Forms.Label();
             this.txt_valor = new System.Windows.Forms.TextBox();
+            this.Arquivos = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel_btns.SuspendLayout();
             this.SuspendLayout();
@@ -65,7 +66,7 @@
             this.btn_fechar.Location = new System.Drawing.Point(634, 0);
             this.btn_fechar.Name = "btn_fechar";
             this.btn_fechar.Size = new System.Drawing.Size(142, 40);
-            this.btn_fechar.TabIndex = 1;
+            this.btn_fechar.TabIndex = 9;
             this.btn_fechar.Text = "FECHAR";
             this.btn_fechar.UseVisualStyleBackColor = true;
             this.btn_fechar.Click += new System.EventHandler(this.btn_fechar_Click);
@@ -84,7 +85,7 @@
             this.txt_desc.Location = new System.Drawing.Point(71, 85);
             this.txt_desc.Name = "txt_desc";
             this.txt_desc.Size = new System.Drawing.Size(686, 145);
-            this.txt_desc.TabIndex = 3;
+            this.txt_desc.TabIndex = 2;
             this.txt_desc.Text = "";
             // 
             // combo_unidade
@@ -96,7 +97,7 @@
             this.combo_unidade.Location = new System.Drawing.Point(127, 241);
             this.combo_unidade.Name = "combo_unidade";
             this.combo_unidade.Size = new System.Drawing.Size(45, 21);
-            this.combo_unidade.TabIndex = 4;
+            this.combo_unidade.TabIndex = 3;
             // 
             // pictureBox1
             // 
@@ -112,7 +113,7 @@
             this.txt_nome.Location = new System.Drawing.Point(169, 43);
             this.txt_nome.Name = "txt_nome";
             this.txt_nome.Size = new System.Drawing.Size(588, 20);
-            this.txt_nome.TabIndex = 6;
+            this.txt_nome.TabIndex = 1;
             // 
             // lbl_nome
             // 
@@ -140,7 +141,7 @@
             this.btn_cancelar.Location = new System.Drawing.Point(350, 0);
             this.btn_cancelar.Name = "btn_cancelar";
             this.btn_cancelar.Size = new System.Drawing.Size(142, 40);
-            this.btn_cancelar.TabIndex = 3;
+            this.btn_cancelar.TabIndex = 8;
             this.btn_cancelar.Text = "CANCELAR";
             this.btn_cancelar.UseVisualStyleBackColor = true;
             this.btn_cancelar.Click += new System.EventHandler(this.btn_cancelar_Click);
@@ -151,7 +152,7 @@
             this.btn_gravar.Location = new System.Drawing.Point(492, 0);
             this.btn_gravar.Name = "btn_gravar";
             this.btn_gravar.Size = new System.Drawing.Size(142, 40);
-            this.btn_gravar.TabIndex = 2;
+            this.btn_gravar.TabIndex = 7;
             this.btn_gravar.Text = "GRAVAR";
             this.btn_gravar.UseVisualStyleBackColor = true;
             this.btn_gravar.Click += new System.EventHandler(this.btn_gravar_Click);
@@ -161,7 +162,7 @@
             this.btn_imagem.Location = new System.Drawing.Point(504, 371);
             this.btn_imagem.Name = "btn_imagem";
             this.btn_imagem.Size = new System.Drawing.Size(75, 23);
-            this.btn_imagem.TabIndex = 9;
+            this.btn_imagem.TabIndex = 6;
             this.btn_imagem.Text = "Add Imagem";
             this.btn_imagem.UseVisualStyleBackColor = true;
             this.btn_imagem.Click += new System.EventHandler(this.btn_imagem_Click);
@@ -189,7 +190,7 @@
             this.txt_qtd.Location = new System.Drawing.Point(269, 242);
             this.txt_qtd.Name = "txt_qtd";
             this.txt_qtd.Size = new System.Drawing.Size(74, 20);
-            this.txt_qtd.TabIndex = 12;
+            this.txt_qtd.TabIndex = 4;
             // 
             // label1
             // 
@@ -223,7 +224,11 @@
             this.txt_valor.Location = new System.Drawing.Point(408, 242);
             this.txt_valor.Name = "txt_valor";
             this.txt_valor.Size = new System.Drawing.Size(74, 20);
-            this.txt_valor.TabIndex = 16;
+            this.txt_valor.TabIndex = 5;
+            // 
+            // Arquivos
+            // 
+            this.Arquivos.FileName = "Arquivos";
             // 
             // Detalhes
             // 
@@ -277,5 +282,6 @@
         public System.Windows.Forms.Label lbl_valor;
         public System.Windows.Forms.Label lbl_imagem;
         public System.Windows.Forms.TextBox txt_valor;
+        private System.Windows.Forms.OpenFileDialog Arquivos;
     }
 }

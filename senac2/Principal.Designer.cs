@@ -39,11 +39,6 @@
             this.panel_titulo = new System.Windows.Forms.Panel();
             this.lbl_titulo = new System.Windows.Forms.Label();
             this.data = new System.Windows.Forms.DataGridView();
-            this.txt_pesquisa = new System.Windows.Forms.TextBox();
-            this.btn_pesquisar = new System.Windows.Forms.Button();
-            this.senacDataSet = new senac2.senacDataSet1();
-            this.produtosBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.produtosTableAdapter = new senac2.senacDataSet1TableAdapters.produtosTableAdapter();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descricaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,11 +46,16 @@
             this.valorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantidadeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imagemDataGridViewImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
+            this.produtosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.senacDataSet = new senac2.senacDataSet1();
+            this.txt_pesquisa = new System.Windows.Forms.TextBox();
+            this.btn_pesquisar = new System.Windows.Forms.Button();
+            this.produtosTableAdapter = new senac2.senacDataSet1TableAdapters.produtosTableAdapter();
             this.pnl_buttons.SuspendLayout();
             this.panel_titulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.data)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.senacDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.senacDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_buttons
@@ -181,41 +181,6 @@
             this.data.TabIndex = 2;
             this.data.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_CellDoubleClick);
             // 
-            // txt_pesquisa
-            // 
-            this.txt_pesquisa.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_pesquisa.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_pesquisa.Location = new System.Drawing.Point(6, 54);
-            this.txt_pesquisa.Name = "txt_pesquisa";
-            this.txt_pesquisa.Size = new System.Drawing.Size(625, 38);
-            this.txt_pesquisa.TabIndex = 3;
-            // 
-            // btn_pesquisar
-            // 
-            this.btn_pesquisar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_pesquisar.Location = new System.Drawing.Point(637, 54);
-            this.btn_pesquisar.Name = "btn_pesquisar";
-            this.btn_pesquisar.Size = new System.Drawing.Size(130, 38);
-            this.btn_pesquisar.TabIndex = 4;
-            this.btn_pesquisar.Text = "PESQUISAR";
-            this.btn_pesquisar.UseVisualStyleBackColor = true;
-            this.btn_pesquisar.Click += new System.EventHandler(this.btn_pesquisar_Click);
-            // 
-            // senacDataSet
-            // 
-            this.senacDataSet.DataSetName = "senacDataSet";
-            this.senacDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // produtosBindingSource
-            // 
-            this.produtosBindingSource.DataMember = "produtos";
-            this.produtosBindingSource.DataSource = this.senacDataSet;
-            // 
-            // produtosTableAdapter
-            // 
-            this.produtosTableAdapter.ClearBeforeFill = true;
-            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
@@ -259,6 +224,41 @@
             this.imagemDataGridViewImageColumn.HeaderText = "imagem";
             this.imagemDataGridViewImageColumn.Name = "imagemDataGridViewImageColumn";
             // 
+            // produtosBindingSource
+            // 
+            this.produtosBindingSource.DataMember = "produtos";
+            this.produtosBindingSource.DataSource = this.senacDataSet;
+            // 
+            // senacDataSet
+            // 
+            this.senacDataSet.DataSetName = "senacDataSet";
+            this.senacDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // txt_pesquisa
+            // 
+            this.txt_pesquisa.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_pesquisa.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_pesquisa.Location = new System.Drawing.Point(6, 54);
+            this.txt_pesquisa.Name = "txt_pesquisa";
+            this.txt_pesquisa.Size = new System.Drawing.Size(625, 38);
+            this.txt_pesquisa.TabIndex = 3;
+            // 
+            // btn_pesquisar
+            // 
+            this.btn_pesquisar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_pesquisar.Location = new System.Drawing.Point(637, 54);
+            this.btn_pesquisar.Name = "btn_pesquisar";
+            this.btn_pesquisar.Size = new System.Drawing.Size(130, 38);
+            this.btn_pesquisar.TabIndex = 4;
+            this.btn_pesquisar.Text = "PESQUISAR";
+            this.btn_pesquisar.UseVisualStyleBackColor = true;
+            this.btn_pesquisar.Click += new System.EventHandler(this.btn_pesquisar_Click);
+            // 
+            // produtosTableAdapter
+            // 
+            this.produtosTableAdapter.ClearBeforeFill = true;
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -276,8 +276,8 @@
             this.panel_titulo.ResumeLayout(false);
             this.panel_titulo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.data)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.senacDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.produtosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.senacDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
