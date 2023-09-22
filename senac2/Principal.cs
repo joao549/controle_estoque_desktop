@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -81,7 +82,17 @@ namespace senac2
                 detalhes.combo_unidade.Text = Convert.ToString(data[3, data.CurrentRow.Index].Value);
                 detalhes.txt_qtd.Text = Convert.ToString(data[4, data.CurrentRow.Index].Value);
                 detalhes.txt_valor.Text = Convert.ToString(data[5, data.CurrentRow.Index].Value);
+                byte[] imagemBytes = BuscarImagemDoBanco(detalhes.txt_id.Text);
+                if (imagemBytes != null && imagemBytes.Length > 0)
+                {
+                    using (MemoryStream memstr = new MemoryStream(imagemBytes))
+                    {
+                        detalhes.pictureBox1.Image = Image.FromStream(memstr);
+                    }
+                }
+
                 detalhes.Show();
+                
             }
             else
             {
@@ -101,6 +112,15 @@ namespace senac2
                 detalhes.combo_unidade.Text = Convert.ToString(data[3, data.CurrentRow.Index].Value);
                 detalhes.txt_qtd.Text = Convert.ToString(data[4, data.CurrentRow.Index].Value);
                 detalhes.txt_valor.Text = Convert.ToString(data[5, data.CurrentRow.Index].Value);
+                byte[] imagemBytes = BuscarImagemDoBanco(detalhes.txt_id.Text);
+                if (imagemBytes != null && imagemBytes.Length > 0)
+                {
+                    using (MemoryStream memstr = new MemoryStream(imagemBytes))
+                    {
+                        detalhes.pictureBox1.Image = Image.FromStream(memstr);
+                    }
+                }
+
                 detalhes.Show();
             }
             else
@@ -195,5 +215,31 @@ namespace senac2
             data.Rows[idx].Cells[4].Value = qtd;
             data.Rows[idx].Cells[5].Value = vlr;
         }
+
+        private byte[] BuscarImagemDoBanco(string id)
+        {
+            using (SqlConnection conn = new SqlConnection(@"Data Source=JOAO-ELIAS\SQLEXPRESS; Initial Catalog=senac;Integrated Security=True"))
+            {
+                conn.Open();
+
+                string sql = "SELECT imagem FROM produtos WHERE id = @id";
+
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read() && reader["imagem"] != DBNull.Value)
+                        {
+                            return (byte[])reader["imagem"];
+                        }
+                    }
+                }
+            }
+
+            return null; // Retorna null se não encontrar a imagem
+        }
+
     }
 }

@@ -77,6 +77,16 @@ namespace senac2
                     comando.Parameters.AddWithValue("@unidade", combo_unidade.Text);
                     comando.Parameters.AddWithValue("@quantidade", txt_qtd.Text);
                     comando.Parameters.AddWithValue("@valor", txt_valor.Text);
+                    if (pictureBox1 != null)
+                    {
+                        MemoryStream memstr = new MemoryStream();
+                        pictureBox1.Image.Save(memstr, pictureBox1.Image.RawFormat);
+                        comando.Parameters.AddWithValue("@imagem", memstr.ToArray());
+                    }
+                    else 
+                    {
+                        comando.Parameters.AddWithValue("@imagem", DBNull.Value);
+                    }
                     conn.Open();
                     comando.ExecuteNonQuery();
                     conn.Close();
@@ -94,7 +104,7 @@ namespace senac2
 
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Deseja Cancelar a inserção/Edição do item selcionado?", "Aviso", MessageBoxButtons.YesNo);
         }
 
         private void btn_imagem_Click(object sender, EventArgs e)
