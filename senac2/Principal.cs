@@ -161,14 +161,15 @@ namespace senac2
                             Descricao = reader["descricao"].ToString(),
                             Unidade = reader["unidade"].ToString(),
                             Valor = reader["valor"].ToString(),
-                            Quantidade = reader["quantidade"].ToString()
-                        };
+                            Quantidade = reader["quantidade"].ToString(),
+                            Imagem = (byte[])reader["imagem"]
+                    };
 
                         produtos.Add(produto);
                     }
                 }
 
-                string caminhoDoArquivo = @"C:\caminho\para\o\diretorio\produtos.xml";
+                string caminhoDoArquivo = @"C:\XML\produtos.xml";
 
                 // Verifica se o diretório existe, se não, cria
                 string diretorio = Path.GetDirectoryName(caminhoDoArquivo);
