@@ -114,7 +114,7 @@ namespace senac2
 
         private void btn_imagem_Click(object sender, EventArgs e)
         {
-            Arquivos.Filter = "*.Jpeg; *.png; *.Gif;| *.Jpeg; *.png; *.Gif";
+            Arquivos.Filter = "*.jpg; *.Jpeg; *.png; *.Gif;| *.jpg; *.Jpeg; *.png; *.Gif";
             if(Arquivos.ShowDialog() == DialogResult.OK)
             {
                 pictureBox1.Image = Image.FromFile(Arquivos.FileName);
