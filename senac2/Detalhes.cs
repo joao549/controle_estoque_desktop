@@ -128,5 +128,19 @@ namespace senac2
             txt_qtd.Text = "";
             txt_valor.Text = "";
         }
+
+        private static Detalhes instance;
+        public static Detalhes GetInstance()
+        {
+            if (instance == null || instance.IsDisposed)
+                instance = new Detalhes();
+            else
+            {
+                if (instance.WindowState == FormWindowState.Minimized)
+                    instance.WindowState = FormWindowState.Normal;
+                instance.BringToFront();
+            }
+            return instance;
+        }
     }
 }

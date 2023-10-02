@@ -66,7 +66,7 @@ namespace senac2
         {
             if (data.CurrentRow != null)
             {
-                Detalhes detalhes = new Detalhes();
+                Detalhes detalhes = Detalhes.GetInstance();
                 detalhes.btn_gravar.Enabled = false;
                 detalhes.btn_cancelar.Enabled = false;
                 detalhes.btn_imagem.Enabled = false;
@@ -107,7 +107,7 @@ namespace senac2
         {
             if (data.CurrentRow != null)
             {
-                Detalhes detalhes = new Detalhes();
+                Detalhes detalhes = Detalhes.GetInstance();
                 detalhes.principal = this;
                 detalhes.txt_id.Text = Convert.ToString(data[0, data.CurrentRow.Index].Value);
                 detalhes.txt_nome.Text = Convert.ToString(data[1, data.CurrentRow.Index].Value);
@@ -134,7 +134,7 @@ namespace senac2
 
         private void btn_adicionar_Click(object sender, EventArgs e)
         {
-            Detalhes detalhes = new Detalhes();
+            Detalhes detalhes = Detalhes.GetInstance();
             detalhes.principal = this;
             detalhes.Show();
         }
@@ -227,7 +227,7 @@ namespace senac2
         {
             if (data.CurrentRow != null)
             {
-                Detalhes detalhes = new Detalhes();
+                Detalhes detalhes = Detalhes.GetInstance();
                 detalhes.btn_gravar.Enabled = false;
                 detalhes.btn_cancelar.Enabled = false;
                 detalhes.btn_imagem.Enabled = false;
@@ -297,6 +297,20 @@ namespace senac2
             public string Valor { get; set; }
             public string Quantidade { get; set; }
             public byte[] Imagem { get; set; }
+        }
+
+        private static Detalhes instance;
+        public static Detalhes GetInstance()
+        {
+            if (instance == null || instance.IsDisposed)
+                instance = new Detalhes();
+            else
+            {
+                if (instance.WindowState == FormWindowState.Minimized)
+                    instance.WindowState = FormWindowState.Normal;
+                instance.BringToFront();
+            }
+            return instance;
         }
 
     }
