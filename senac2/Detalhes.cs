@@ -53,7 +53,7 @@ namespace senac2
                         conn.Open();
                         comando.ExecuteNonQuery();
                         conn.Close();
-                        MessageBox.Show("Deu certo");
+                        MessageBox.Show("Dados Gravados com Sucesso!");
                         principal.AtualizarDataGridView();
                         Limpacampos();
 
@@ -117,6 +117,7 @@ namespace senac2
             Arquivos.Filter = "*.jpg; *.Jpeg; *.png; *.Gif;| *.jpg; *.Jpeg; *.png; *.Gif";
             if(Arquivos.ShowDialog() == DialogResult.OK)
             {
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
                 pictureBox1.Image = Image.FromFile(Arquivos.FileName);
             }
         }
@@ -124,9 +125,12 @@ namespace senac2
         {
             txt_nome.Text = "";
             txt_desc.Text = "";
-            combo_unidade.Text = "";
+            combo_unidade.Text = "UN";
             txt_qtd.Text = "";
             txt_valor.Text = "";
+            pictureBox1.Image = null;
+            txt_nome.Select();
+            
         }
 
         private static Detalhes instance;
@@ -142,5 +146,6 @@ namespace senac2
             }
             return instance;
         }
+
     }
 }

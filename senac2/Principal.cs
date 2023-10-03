@@ -91,6 +91,7 @@ namespace senac2
                     using (MemoryStream memstr = new MemoryStream(imagemBytes))
                     {
                         detalhes.pictureBox1.Image = Image.FromStream(memstr);
+                        detalhes.pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
                     }
                 }
 
@@ -121,6 +122,7 @@ namespace senac2
                     using (MemoryStream memstr = new MemoryStream(imagemBytes))
                     {
                         detalhes.pictureBox1.Image = Image.FromStream(memstr);
+                        detalhes.pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
                     }
                 }
 
@@ -137,6 +139,7 @@ namespace senac2
             Detalhes detalhes = Detalhes.GetInstance();
             detalhes.principal = this;
             detalhes.Show();
+            detalhes.combo_unidade.Text = "UN";
         }
 
         private void btn_xml_Click(object sender, EventArgs e)
@@ -186,7 +189,7 @@ namespace senac2
                     serializer.Serialize(fs, produtos);
                 }
 
-                MessageBox.Show("Arquivo XML gerado com sucesso!");
+                MessageBox.Show("XML gerado! Caminho: C>XML>produtos.xml");
             }
             catch (Exception ex)
             {
